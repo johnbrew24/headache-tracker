@@ -93,8 +93,15 @@ select{padding-right:26px;background-image:url("data:image/svg+xml,%3Csvg xmlns=
 <div class="card">
 <label class="field">Meals & drinks</label><textarea id="meals" placeholder="Coffee, skipped lunch..."></textarea>
 <div class="grid2" style="margin-top:6px">
-<div><label class="field">Hydration</label><select id="hydration"><option>—</option><option>Well</option><option>Normal</option><option>Dehydrated</option><option>Very</option></select></div>
-<div><label class="field">Sleep</label><select id="sleep"><option>—</option><option>Excellent</option><option>Good</option><option>Fair</option><option>Poor</option></select></div>
+<div><label class="field">Hydration</label><select id="hydration">
+<option value="Not recorded">Not recorded</option>
+<option value="Well hydrated">Well hydrated</option>
+<option value="Normal">Normal</option>
+<option value="Mildly dehydrated">Mildly dehydrated</option>
+<option value="Moderately dehydrated">Moderately dehydrated</option>
+<option value="Very dehydrated">Very dehydrated</option>
+</select></div>
+<div><label class="field">Sleep</label><select id="sleep"><option>Not recorded</option><option>Excellent</option><option>Good</option><option>Fair</option><option>Poor</option></select></div>
 </div>
 </div>
 
@@ -143,12 +150,7 @@ for(let i=0;i<=10;i++){
   let b=document.createElement('button');
   b.className='sev';
   b.textContent=i;
-  b.onclick=()=>{
-    severity=i;
-    document.querySelectorAll('.sev').forEach(x=>x.classList.remove('on'));
-    b.classList.add('on');
-    document.getElementById('sevLabel').textContent=i===0?'No pain':`${i}/10`;
-  };
+  b.onclick=()=>{ severity=i; document.querySelectorAll('.sev').forEach(x=>x.classList.remove('on')); b.classList.add('on'); document.getElementById('sevLabel').textContent=i===0?'No pain':`${i}/10`; };
   document.getElementById('severity').appendChild(b);
 }
 document.querySelectorAll('.tag').forEach(b=>b.onclick=()=>b.classList.toggle('on'));
@@ -177,8 +179,8 @@ function reset(){
   document.getElementById('sevLabel').textContent='0–10';
   document.getElementById('meals').value='';
   document.getElementById('notes').value='';
-  document.getElementById('hydration').value='—';
-  document.getElementById('sleep').value='—';
+  document.getElementById('hydration').value='Not recorded';
+  document.getElementById('sleep').value='Not recorded';
   dateEl.value=`${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())}`;
   timeEl.value=`${pad(now.getHours())}:${pad(now.getMinutes())}`;
 }
@@ -189,7 +191,7 @@ function render(){
   let avg=entries.length?(entries.reduce((s,e)=>s+e.severity,0)/entries.length).toFixed(1):0;
   let month=new Date().toISOString().slice(0,7);
   document.getElementById('stats').innerHTML=`<div class="stat"><span>Total</span><b>${entries.length}</b></div><div class="stat"><span>Avg</span><b>${avg}</b></div><div class="stat"><span>Month</span><b>${entries.filter(e=>e.date.startsWith(month)).length}</b></div>`;
-  document.getElementById('history').innerHTML=a.length?a.map(e=>`<div class="card entry"><div class="entry-top"><div><div class="date">${e.date} ${e.time}</div><div class="meta">${e.pain.join(', ')||'—'}</div></div><span class="severity-pill ${cls(e.severity)}">${e.severity}/10</span></div>${e.symptoms.length?`<div class="chips">${e.symptoms.map(x=>`<span class="chip">${esc(x)}</span>`).join('')}</div>`:''}${e.triggers.length?`<div class="meta"><b>Triggers:</b> ${e.triggers.map(esc).join(', ')}</div>`:''}${e.meals?`<div class="meta"><b>Food:</b> ${esc(e.meals)}</div>`:''}<button class="delete" onclick="del(${e.id})">Delete</button></div>`).join(''):'<div class="empty">No entries yet. Log your first headache above.</div>';
+  document.getElementById('history').innerHTML=a.length?a.map(e=>`<div class="card entry"><div class="entry-top"><div><div class="date">${e.date} ${e.time}</div><div class="meta">${e.pain.join(', ')||'—'}</div></div><span class="severity-pill ${cls(e.severity)}">${e.severity}/10</span></div>${e.symptoms.length?`<div class="chips">${e.symptoms.map(x=>`<span class="chip">${esc(x)}</span>`).join('')}</div>`:''}${e.triggers.length?`<div class="meta"><b>Triggers:</b> ${e.triggers.map(esc).join(', ')}</div>`:''}${e.meals?`<div class="meta"><b>Food:</b> ${esc(e.meals)}</div>`:''}${e.hydration?`<div class="meta"><b>Hydration:</b> ${esc(e.hydration)}</div>`:''}<button class="delete" onclick="del(${e.id})">Delete</button></div>`).join(''):'<div class="empty">No entries yet. Log your first headache above.</div>';
   renderInsights();
 }
 function del(id){
