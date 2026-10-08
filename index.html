@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Headaches">
+<meta name="theme-color" content="#007aff">
+<meta name="format-detection" content="telephone=no">
+<link rel="manifest" href="headache-manifest.webmanifest">
+<link rel="icon" type="image/png" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><rect fill='%23007aff' width='180' height='180' rx='40'/><circle cx='90' cy='90' r='35' fill='white'/></svg>">
+<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><rect fill='%23007aff' width='180' height='180' rx='40'/><circle cx='90' cy='90' r='35' fill='white'/></svg>">
+<title>Headache Journal</title>
+<style>
+:root{--bg:#f5f5f7;--card:#fff;--text:#17171a;--muted:#7b7b82;--line:#e5e5ea;--blue:#007aff;--red:#ff3b30;--green:#34c759;--orange:#ff9500;--purple:#af52de}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif}
+.app{max-width:620px;margin:auto;min-height:100vh;padding:env(safe-area-inset-top) 14px calc(88px + env(safe-area-inset-bottom))}
+.header{padding:18px 5px 10px}.eyebrow{font-size:14px;color:var(--muted);font-weight:600}.title{font-size:34px;line-height:1.05;margin:4px 0 5px;font-weight:750;letter-spacing:-1px}.subtitle{color:var(--muted);font-size:14px}
+.view{display:none}.view.active{display:block}
+.card{background:var(--card);border-radius:20px;padding:17px;margin:12px 0;box-shadow:0 1px 2px #0000000a,0 8px 25px #00000006}
+.section-title{font-size:18px;font-weight:750;margin:0 0 13px}
+.row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}.row:last-child{border-bottom:0}
+.label{font-weight:650}.hint{font-size:12px;color:var(--muted);margin-top:3px}
+input,textarea,select{font:inherit;width:100%;border:0;background:#f2f2f7;border-radius:12px;padding:12px 13px;color:var(--text);outline:none}textarea{min-height:95px;resize:vertical}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+label.field{display:block;font-size:12px;color:var(--muted);font-weight:650;margin-bottom:6px}
+.severity{display:grid;grid-template-columns:repeat(11,1fr);gap:4px}.sev{border:0;background:#f2f2f7;padding:10px 0;border-radius:9px;font-weight:700;color:#555;cursor:pointer}.sev.on{background:var(--blue);color:white}
+.tags{display:flex;flex-wrap:wrap;gap:8px}.tag{background:#f2f2f7;border-radius:999px;padding:9px 11px;font-size:13px;font-weight:600;border:1px solid transparent;cursor:pointer}.tag.on{background:#e6f1ff;color:#0066cc;border-color:#b8d8ff}
+.primary{width:100%;border:0;border-radius:15px;background:var(--blue);color:white;padding:15px;font-size:17px;font-weight:700;box-shadow:0 7px 16px #007aff2b;cursor:pointer}.secondary{border:0;background:#f2f2f7;border-radius:12px;padding:11px 13px;font-weight:650}
+.bottom{position:fixed;z-index:5;bottom:0;left:0;right:0;background:#ffffffeb;backdrop-filter:blur(18px);border-top:1px solid #dddde2;padding:8px 14px calc(8px + env(safe-area-inset-bottom));display:flex;justify-content:center}
+.nav{max-width:590px;width:100%;display:grid;grid-template-columns:repeat(3,1fr);gap:4px}.nav button{border:0;background:transparent;color:#777;font-weight:650;padding:7px;border-radius:12px;cursor:pointer}.nav button.on{color:var(--blue);background:#eaf3ff}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.stat{background:#f2f2f7;border-radius:15px;padding:13px}.stat b{display:block;font-size:25px;margin-top:2px}.stat span{font-size:12px;color:var(--muted);font-weight:650}
+.entry{position:relative}.entry-top{display:flex;justify-content:space-between;gap:10px}.date{font-weight:750}.severity-pill{border-radius:999px;padding:5px 9px;font-weight:750;font-size:12px}.low{background:#e9f8ee;color:#21883d}.med{background:#fff2df;color:#a45b00}.high{background:#ffe9e7;color:#c62820}
+.meta{font-size:13px;color:var(--muted);margin:8px 0}.chips{display:flex;flex-wrap:wrap;gap:5px}.chip{background:#f2f2f7;border-radius:999px;padding:5px 8px;font-size:11px}
+.delete{position:absolute;right:0;bottom:0;border:0;background:transparent;color:var(--red);font-weight:650;cursor:pointer}.empty{text-align:center;color:var(--muted);padding:35px 10px}
+.bar-row{display:grid;grid-template-columns:75px 1fr 35px;align-items:center;gap:8px;margin:10px 0;font-size:12px}.bar{height:9px;background:#eeeef2;border-radius:99px;overflow:hidden}.fill{height:100%;background:var(--blue);border-radius:99px}
+.small{font-size:13px;color:var(--muted)}.danger-note{background:#fff4f3;color:#9d2822;border-radius:13px;padding:12px;font-size:12px;line-height:1.4}
+@media(max-width:420px){.severity{gap:2px}.sev{font-size:12px;padding:9px 0}.grid2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="header">
+<div class="eyebrow" id="greeting">Health Journal</div>
+<div class="title">Headaches</div>
+<div class="subtitle">Track patterns. Understand your triggers.</div>
+</header>
+
+<main>
+<section id="logView" class="view active">
+<div class="card">
+<div class="section-title">New headache</div>
+<div class="grid2">
+<div><label class="field">DATE</label><input id="date" type="date"></div>
+<div><label class="field">TIME</label><input id="time" type="time"></div>
+</div>
+</div>
+
+<div class="card">
+<div class="section-title">How bad was it?</div>
+<div class="severity" id="severity"></div>
+<div style="text-align:center;color:var(--muted);font-size:12px;margin-top:8px" id="sevLabel">No severity selected</div>
+</div>
+
+<div class="card">
+<div class="section-title">Pain type</div>
+<div class="tags" id="painTags">
+  <button class="tag">Sharp</button><button class="tag">Throbbing</button><button class="tag">Dull</button><button class="tag">Pressure</button><button class="tag">Burning</button><button class="tag">Stabbing</button><button class="tag">Pulsing</button><button class="tag">Tight</button>
+</div>
+</div>
+
+<div class="card">
+<div class="section-title">Symptoms</div>
+<div class="tags" id="symptomTags">
+  <button class="tag">Nausea</button><button class="tag">Vomiting</button><button class="tag">Light sensitivity</button><button class="tag">Sound sensitivity</button><button class="tag">Dizziness</button><button class="tag">Vision changes</button><button class="tag">Neck pain</button><button class="tag">Fatigue</button><button class="tag">Aura</button>
+</div>
+</div>
+
+<div class="card">
+<div class="section-title">What happened beforehand?</div>
+<div style="margin-bottom:12px"><label class="field">MEALS & DRINKS</label><textarea id="meals" placeholder="e.g. Breakfast 8am, skipped lunch, 2 coffees..."></textarea></div>
+<div class="grid2">
+<div><label class="field">HYDRATION</label><select id="hydration"><option>Not recorded</option><option>Well hydrated</option><option>Normal</option><option>Probably dehydrated</option><option>Very dehydrated</option></select></div>
+<div><label class="field">SLEEP</label><select id="sleep"><option>Not recorded</option><option>Excellent</option><option>Good</option><option>Fair</option><option>Poor</option></select></div>
+</div>
+</div>
+
+<div class="card">
+<div class="section-title">Possible triggers & notes</div>
+<div class="tags" id="triggerTags" style="margin-bottom:12px">
+<button class="tag">Stress</button><button class="tag">Missed meal</button><button class="tag">Caffeine</button><button class="tag">Alcohol</button><button class="tag">Exercise</button><button class="tag">Screen time</button><button class="tag">Weather</button><button class="tag">Poor sleep</button>
+</div>
+<textarea id="notes" placeholder="Anything else you noticed?"></textarea>
+</div>
+<button class="primary" onclick="saveEntry()">Save Headache</button>
+</section>
+
+<section id="historyView" class="view">
+<div class="card"><div class="stats" id="stats"></div></div>
+<div id="history"></div>
+</section>
+
+<section id="insightsView" class="view">
+<div class="card"><div class="section-title">Your patterns</div><div id="insights"></div></div>
+<div class="card">
+<div class="section-title">Severity distribution</div><div id="distribution"></div>
+</div>
+<div class="card"><div class="danger-note">This app is a personal tracking tool and does not diagnose headaches or determine their cause. Seek medical care for a sudden, severe, or unusual headache, or other concerning symptoms.</div></div>
+</section>
+</main>
+</div>
+
+<div class="bottom"><div class="nav">
+<button class="on" onclick="switchView('logView',this)">＋<br><small>Log</small></button>
+<button onclick="switchView('historyView',this)">☷<br><small>History</small></button>
+<button onclick="switchView('insightsView',this)">◔<br><small>Insights</small></button>
+</div></div>
+
+<script>
+let entries=JSON.parse(localStorage.getItem('headacheJournalV2')||'[]');
+let severity=null;
+const now=new Date(), pad=n=>String(n).padStart(2,'0');
+document.getElementById('date').value=`${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())}`;
+document.getElementById('time').value=`${pad(now.getHours())}:${pad(now.getMinutes())}`;
+
+for(let i=0;i<=10;i++){let b=document.createElement('button');b.className='sev';b.textContent=i;b.onclick=()=>{severity=i;document.querySelectorAll('.sev').forEach(x=>x.classList.remove('on'));b.classList.add('on');document.getElementById('sevLabel').textContent=i===0?'No pain':`Severity ${i}/10`;};document.getElementById('severity').appendChild(b)}
+document.querySelectorAll('.tag').forEach(b=>b.onclick=()=>b.classList.toggle('on'));
+
+function selected(id){return [...document.querySelectorAll(`#${id} .tag.on`)].map(x=>x.textContent)}
+function saveEntry(){
+ if(severity===null){alert('Please select a severity from 0–10.');return}
+ entries.push({id:Date.now(),date:document.getElementById('date').value,time:document.getElementById('time').value,severity,pain:selected('painTags'),symptoms:selected('symptomTags'),triggers:selected('triggerTags'),meals:document.getElementById('meals').value,hydration:document.getElementById('hydration').value,sleep:document.getElementById('sleep').value,notes:document.getElementById('notes').value});
+ localStorage.setItem('headacheJournalV2',JSON.stringify(entries));alert('Saved ✓');reset();render();
+}
+function reset(){
+ document.querySelectorAll('.tag.on').forEach(x=>x.classList.remove('on'));severity=null;document.querySelectorAll('.sev').forEach(x=>x.classList.remove('on'));document.getElementById('sevLabel').textContent='No severity selected';document.getElementById('meals').value='';document.getElementById('notes').value='';document.getElementById('hydration').value='Not recorded';document.getElementById('sleep').value='Not recorded';
+}
+function switchView(id,btn){document.querySelectorAll('.view').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('on'));btn.classList.add('on');render()}
+function cls(s){return s>=8?'high':s>=5?'med':'low'}
+function esc(s){return String(s||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+function render(){
+ let a=[...entries].sort((x,y)=>(y.date+y.time).localeCompare(x.date+x.time));
+ let avg=entries.length?(entries.reduce((s,e)=>s+e.severity,0)/entries.length).toFixed(1):'—';
+ let month=new Date().toISOString().slice(0,7);
+ document.getElementById('stats').innerHTML=`<div class="stat"><span>Total</span><b>${entries.length}</b></div><div class="stat"><span>Avg severity</span><b>${avg}</b></div><div class="stat"><span>This month</span><b>${entries.filter(e=>e.date.startsWith(month)).length}</b></div>`;
+ document.getElementById('history').innerHTML=a.length?a.map(e=>`<div class="card entry"><div class="entry-top"><div><div class="date">${e.date} · ${e.time}</div><div class="meta">${e.pain.join(', ')||'Pain type not recorded'}</div></div><span class="severity-pill ${cls(e.severity)}">${e.severity}/10</span></div>${e.symptoms.length?`<div class="chips">${e.symptoms.map(x=>`<span class="chip">${esc(x)}</span>`).join('')}</div>`:''}${e.triggers.length?`<div class="meta">Triggers: ${e.triggers.map(esc).join(', ')}</div>`:''}${e.meals?`<div class="meta"><b>Food:</b> ${esc(e.meals)}</div>`:''}<button class="delete" onclick="del(${e.id})">Delete</button></div>`).join(''):'<div class="card empty">No headaches logged yet.<br>Tap Log below to add your first one.</div>';
+ renderInsights();
+}
+function del(id){if(confirm('Delete this entry?')){entries=entries.filter(e=>e.id!==id);localStorage.setItem('headacheJournalV2',JSON.stringify(entries));render()}}
+function renderInsights(){
+ if(!entries.length){document.getElementById('insights').innerHTML='<div class="small">Log several headaches and this page will summarize your most common pain types, symptoms, and triggers.</div>';document.getElementById('distribution').innerHTML='<div class="small">No data yet.</div>';return}
+ const counts=(key)=>{let c={};entries.forEach(e=>(e[key]||[]).forEach(x=>c[x]=(c[x]||0)+1));return Object.entries(c).sort((a,b)=>b[1]-a[1])};
+ let pain=counts('pain'),sym=counts('symptoms'),trig=counts('triggers');
+ document.getElementById('insights').innerHTML=`<div class="row"><div><div class="label">Most common pain</div><div class="hint">${pain[0]?.[0]||'—'}</div></div><b>${pain[0]?.[1]||0}</b></div><div class="row"><div><div class="label">Most common symptom</div><div class="hint">${sym[0]?.[0]||'—'}</div></div><b>${sym[0]?.[1]||0}</b></div><div class="row"><div><div class="label">Most recorded trigger</div><div class="hint">${trig[0]?.[0]||'—'}</div></div><b>${trig[0]?.[1]||0}</b></div>`;
+ let buckets=[0,0,0,0,0];entries.forEach(e=>buckets[Math.min(4,Math.floor(e.severity/2.01))]++);
+ let max=Math.max(...buckets,1);document.getElementById('distribution').innerHTML=buckets.map((n,i)=>`<div class="bar-row"><span>${i*2}–${Math.min(10,i*2+1)} /10</span><div class="bar"><div class="fill" style="width:${n/max*100}%"></div></div><b>${n}</b></div>`).join('');
+}
+render();
+</script>
+</body>
+</html>
