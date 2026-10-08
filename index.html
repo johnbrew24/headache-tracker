@@ -13,8 +13,8 @@
 <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect fill='%23007aff' width='192' height='192' rx='44'/><g fill='white' opacity='0.9'><circle cx='96' cy='70' r='8'/><circle cx='75' cy='85' r='6'/><circle cx='117' cy='85' r='6'/><path d='M85 100 Q96 115 107 100' stroke='white' stroke-width='3' fill='none' stroke-linecap='round'/></g></svg>">
 <title>Headache Journal</title>
 <style>
-:root{--bg:#f5f5f7;--card:#fff;--text:#17171a;--muted:#7b7b82;--line:#e5e5ea;--blue:#007aff;--red:#ff3b30;--green:#34c759}html,body{width:100%;height:100%;margin:0;padding:0}*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none}body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",sans-serif;font-size:15px;-webkit-user-select:none;user-select:none}.app{display:flex;flex-direction:column;min-height:100vh;width:100%;padding:env(safe-area-inset-top) 0 0 0}.header{padding:12px 12px 8px;flex-shrink:0;background:var(--bg)}.eyebrow{font-size:11px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:0.5px}.title{font-size:28px;font-weight:800;margin:2px 0 2px;letter-spacing:-0.5px}.subtitle{color:var(--muted);font-size:12px;margin:0}.main{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:0 10px;padding-bottom:80px}.card{background:var(--card);border-radius:16px;padding:13px;margin:10px 0;box-shadow:0 1px 3px #00000008}.section-title{font-size:14px;font-weight:750;margin:0 0 10px;letter-spacing:-0.3px}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px}label.field{display:block;font-size:11px;color:var(--muted);font-weight:650;margin-bottom:5px;text-transform:uppercase;letter-spacing:0.3px}input,textarea,select{font:inherit;width:100%;border:0;background:#f2f2f7;border-radius:10px;padding:10px 12px;color:var(--text);outline:none;-webkit-appearance:none;appearance:none}textarea{min-height:70px;resize:none}select{padding-right:28px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23007aff'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 8px center;background-size:16px;padding-right:32px}.severity{display:grid;grid-template-columns:repeat(11,1fr);gap:3px;margin:8px 0}.sev{border:0;background:#e8e8ed;padding:8px 0;border-radius:8px;font-weight:700;font-size:12px;color:#555;cursor:pointer;transition:all 0.15s}.sev.on{background:var(--blue);color:white}.tags{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}.tag{background:#f2f2f7;border-radius:16px;padding:7px 11px;font-size:12px;font-weight:600;border:1px solid transparent;cursor:pointer;transition:all 0.15s;white-space:nowrap}.tag.on{background:#cde4ff;color:#0051d5;border-color:#99c3ff}.primary{width:100%;border:0;border-radius:12px;background:var(--blue);color:white;padding:13px;font-size:15px;font-weight:700;box-shadow:0 4px 12px #007aff33;cursor:pointer;margin:12px 0 0;transition:all 0.2s}.primary:active{transform:scale(0.98)}.row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}.row:last-child{border-bottom:0}.label{font-weight:650;font-size:13px}.hint{font-size:11px;color:var(--muted);margin-top:2px}.view{display:none}.view.active{display:block}.bottom{position:fixed;z-index:5;bottom:0;left:0;right:0;background:#ffffffed;backdrop-filter:blur(15px);border-top:1px solid #dddde2;padding:6px 8px calc(6px + env(safe-area-inset-bottom));display:flex;justify-content:center}.nav{width:100%;max-width:540px;display:grid;grid-template-columns:repeat(3,1fr);gap:3px}.nav button{border:0;background:transparent;color:#999;font-weight:600;padding:6px;border-radius:10px;font-size:11px;cursor:pointer;transition:all 0.15s}.nav button small{display:block;font-size:18px;margin-bottom:2px}.nav button.on{color:var(--blue);background:#eaf3ff}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.stat{background:#f2f2f7;border-radius:12px;padding:11px}.stat b{display:block;font-size:20px;margin-top:2px;font-weight:800}.stat span{font-size:10px;color:var(--muted);font-weight:650;text-transform:uppercase;letter-spacing:0.2px}.entry{position:relative;padding-bottom:10px}.entry-top{display:flex;justify-content:space-between;gap:8px}.date{font-weight:750;font-size:13px}.severity-pill{border-radius:12px;padding:4px 8px;font-weight:750;font-size:11px}.low{background:#e9f8ee;color:#21883d}.med{background:#fff2df;color:#a45b00}.high{background:#ffe9e7;color:#c62820}.meta{font-size:12px;color:var(--muted);margin:6px 0}.chips{display:flex;flex-wrap:wrap;gap:4px;margin:6px 0}.chip{background:#f2f2f7;border-radius:10px;padding:4px 7px;font-size:10px}.delete{border:0;background:transparent;color:var(--red);font-weight:650;font-size:12px;cursor:pointer;padding:4px 0;margin-top:6px}.empty{text-align:center;color:var(--muted);padding:40px 15px;font-size:13px}.bar-row{display:grid;grid-template-columns:40px 1fr 28px;align-items:center;gap:8px;margin:8px 0;font-size:11px}.bar{height:6px;background:#eeeef2;border-radius:3px;overflow:hidden}.fill{height:100%;background:var(--blue)}.small{font-size:12px;color:var(--muted);line-height:1.4}.danger-note{background:#fff4f3;color:#9d2822;border-radius:10px;padding:10px;font-size:11px;line-height:1.5}
-@media(max-width:400px){.severity{gap:2px}.sev{font-size:11px;padding:7px 0}.grid2{grid-template-columns:1fr}.title{font-size:24px}}
+:root{--bg:#f5f5f7;--card:#fff;--text:#17171a;--muted:#7b7b82;--line:#e5e5ea;--blue:#007aff;--red:#ff3b30;--green:#34c759}*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none}html,body{width:100vw;height:100vh;overflow:hidden}body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",sans-serif;font-size:14px;-webkit-user-select:none;user-select:none}.app{display:flex;flex-direction:column;width:100vw;height:100vh;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom) 0}.header{padding:10px 12px 6px;flex-shrink:0;background:var(--bg);border-bottom:0.5px solid var(--line)}.eyebrow{font-size:10px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:0.4px}.title{font-size:24px;font-weight:900;margin:2px 0 0;letter-spacing:-0.8px}.main{flex:1;overflow-y:scroll;-webkit-overflow-scrolling:touch;overflow-x:hidden;padding:0;width:100vw}.section{padding:8px 10px}.card{background:var(--card);border-radius:14px;padding:11px;margin:6px 0;box-shadow:0 1px 2px #00000006}.section-title{font-size:12px;font-weight:800;margin:0 0 7px;letter-spacing:-0.2px;color:var(--text)}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:6px}label.field{display:block;font-size:10px;color:var(--muted);font-weight:700;margin-bottom:3px;text-transform:uppercase;letter-spacing:0.2px}input,textarea,select{font:inherit;width:100%;border:0;background:#f2f2f7;border-radius:8px;padding:8px 10px;color:var(--text);outline:none;-webkit-appearance:none;appearance:none;font-size:14px;line-height:1.3}input::placeholder,textarea::placeholder{color:var(--muted)}textarea{min-height:60px;resize:none}select{padding-right:26px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23007aff'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 6px center;background-size:14px;padding-right:28px}.severity{display:grid;grid-template-columns:repeat(11,1fr);gap:2px;margin:6px 0}.sev{border:0;background:#e8e8ed;padding:6px 0;border-radius:6px;font-weight:700;font-size:11px;color:#555;cursor:pointer;transition:all 0.1s;line-height:1}.sev.on{background:var(--blue);color:white}.tags{display:flex;flex-wrap:wrap;gap:4px;margin:6px 0}.tag{background:#f2f2f7;border-radius:14px;padding:6px 9px;font-size:11px;font-weight:600;border:1px solid transparent;cursor:pointer;transition:all 0.1s;white-space:nowrap}.tag.on{background:#cde4ff;color:#0051d5;border-color:#99c3ff}.save-btn{width:100%;border:0;border-radius:10px;background:var(--blue);color:white;padding:11px;font-size:14px;font-weight:700;box-shadow:0 4px 12px #007aff33;cursor:pointer;margin-top:8px;transition:all 0.2s}.save-btn:active{transform:scale(0.96)}.row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--line)}.row:last-child{border-bottom:0}.label{font-weight:700;font-size:12px}.hint{font-size:10px;color:var(--muted);margin-top:2px}.view{display:none}.view.active{display:block}.bottom{position:fixed;z-index:10;bottom:0;left:0;right:0;background:#ffffffed;backdrop-filter:blur(15px);border-top:1px solid #dddde2;padding:5px 6px calc(5px + env(safe-area-inset-bottom));display:flex;justify-content:center}.nav{width:100%;max-width:540px;display:grid;grid-template-columns:repeat(3,1fr);gap:2px}.nav button{border:0;background:transparent;color:#999;font-weight:600;padding:4px;border-radius:8px;font-size:10px;cursor:pointer;transition:all 0.1s;line-height:1.2}.nav button small{display:block;font-size:16px;margin-bottom:1px}.nav button.on{color:var(--blue);background:#eaf3ff}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.stat{background:#f2f2f7;border-radius:10px;padding:9px}.stat b{display:block;font-size:18px;margin-top:1px;font-weight:800}.stat span{font-size:9px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:0.1px}.entry{position:relative;padding-bottom:8px}.entry-top{display:flex;justify-content:space-between;gap:8px}.date{font-weight:750;font-size:12px}.severity-pill{border-radius:10px;padding:3px 6px;font-weight:750;font-size:10px}.low{background:#e9f8ee;color:#21883d}.med{background:#fff2df;color:#a45b00}.high{background:#ffe9e7;color:#c62820}.meta{font-size:11px;color:var(--muted);margin:4px 0}.chips{display:flex;flex-wrap:wrap;gap:3px;margin:4px 0}.chip{background:#f2f2f7;border-radius:8px;padding:3px 6px;font-size:9px}.delete{border:0;background:transparent;color:var(--red);font-weight:650;font-size:11px;cursor:pointer;padding:3px 0;margin-top:4px}.empty{text-align:center;color:var(--muted);padding:30px 15px;font-size:12px;line-height:1.4}.bar-row{display:grid;grid-template-columns:35px 1fr 24px;align-items:center;gap:6px;margin:6px 0;font-size:10px}.bar{height:5px;background:#eeeef2;border-radius:2px;overflow:hidden}.fill{height:100%;background:var(--blue)}.small{font-size:11px;color:var(--muted);line-height:1.4}.danger-note{background:#fff4f3;color:#9d2822;border-radius:8px;padding:8px;font-size:10px;line-height:1.4}
+@media(max-width:400px){.severity{gap:1px}.sev{font-size:10px;padding:5px 0}.grid2{grid-template-columns:1fr}.title{font-size:22px}}
 </style>
 </head>
 <body>
@@ -26,8 +26,9 @@
 
 <main class="main">
 <section id="logView" class="view active">
+<div class="section">
 <div class="card">
-<div class="section-title">Log headache</div>
+<div class="section-title">Quick log</div>
 <div class="grid2">
 <div><label class="field">Date</label><input id="date" type="date"></div>
 <div><label class="field">Time</label><input id="time" type="time"></div>
@@ -37,11 +38,11 @@
 <div class="card">
 <div class="section-title">Severity</div>
 <div class="severity" id="severity"></div>
-<div style="text-align:center;color:var(--muted);font-size:11px;margin-top:6px" id="sevLabel">Select 0–10</div>
+<div style="text-align:center;color:var(--muted);font-size:10px;margin-top:4px" id="sevLabel">0–10</div>
 </div>
 
 <div class="card">
-<div class="section-title">Pain type</div>
+<div class="section-title">Pain</div>
 <div class="tags" id="painTags">
   <button class="tag">Sharp</button><button class="tag">Throbbing</button><button class="tag">Dull</button><button class="tag">Pressure</button><button class="tag">Burning</button><button class="tag">Stabbing</button><button class="tag">Pulsing</button><button class="tag">Tight</button>
 </div>
@@ -55,42 +56,47 @@
 </div>
 
 <div class="card">
-<div style="margin-bottom:10px"><label class="field">Meals & drinks</label><textarea id="meals" placeholder="e.g. Coffee 8am, skipped lunch..."></textarea></div>
-<div class="grid2">
-<div><label class="field">Hydration</label><select id="hydration"><option>Not recorded</option><option>Well hydrated</option><option>Normal</option><option>Dehydrated</option><option>Very dehydrated</option></select></div>
-<div><label class="field">Sleep</label><select id="sleep"><option>Not recorded</option><option>Excellent</option><option>Good</option><option>Fair</option><option>Poor</option></select></div>
+<label class="field">Meals & drinks</label><textarea id="meals" placeholder="Coffee, skipped lunch..."></textarea>
+<div class="grid2" style="margin-top:6px">
+<div><label class="field">Hydration</label><select id="hydration"><option>—</option><option>Well</option><option>Normal</option><option>Dehydrated</option><option>Very</option></select></div>
+<div><label class="field">Sleep</label><select id="sleep"><option>—</option><option>Excellent</option><option>Good</option><option>Fair</option><option>Poor</option></select></div>
 </div>
 </div>
 
 <div class="card">
 <div class="section-title">Triggers & notes</div>
-<div class="tags" id="triggerTags" style="margin-bottom:10px">
+<div class="tags" id="triggerTags" style="margin-bottom:6px">
 <button class="tag">Stress</button><button class="tag">Missed meal</button><button class="tag">Caffeine</button><button class="tag">Alcohol</button><button class="tag">Exercise</button><button class="tag">Screen time</button><button class="tag">Weather</button><button class="tag">Poor sleep</button>
 </div>
 <textarea id="notes" placeholder="Other notes..."></textarea>
-<button class="primary" onclick="saveEntry()">Save</button>
+<button class="save-btn" onclick="saveEntry()">Save</button>
+</div>
 </div>
 </section>
 
 <section id="historyView" class="view">
+<div class="section">
 <div class="card"><div class="stats" id="stats"></div></div>
-<div id="history"></div>
+<div id="history" class="section"></div>
+</div>
 </section>
 
 <section id="insightsView" class="view">
-<div class="card"><div class="section-title">Patterns</div><div id="insights"></div></div>
+<div class="section">
+<div class="card"><div class="section-title">Your patterns</div><div id="insights"></div></div>
 <div class="card">
 <div class="section-title">Distribution</div><div id="distribution"></div>
 </div>
-<div class="card"><div class="danger-note">📋 Personal tracking only. Not a diagnosis. Seek medical care for severe or unusual headaches.</div></div>
+<div class="card"><div class="danger-note">📋 Personal tracking only. Not a diagnosis. Seek care for severe headaches.</div></div>
+</div>
 </section>
 </main>
 </div>
 
 <div class="bottom"><div class="nav">
-<button class="on" onclick="switchView('logView',this)"><small>+</small><br>Log</button>
-<button onclick="switchView('historyView',this)"><small>📊</small><br>History</button>
-<button onclick="switchView('insightsView',this)"><small>◔</small><br>Insights</button>
+<button class="on" onclick="switchView('logView',this)"><small>+</small>Log</button>
+<button onclick="switchView('historyView',this)"><small>📊</small>History</button>
+<button onclick="switchView('insightsView',this)"><small>◔</small>Insights</button>
 </div></div>
 
 <script>
@@ -122,22 +128,22 @@ document.querySelectorAll('.tag').forEach(b=>b.onclick=()=>b.classList.toggle('o
 
 function selected(id){return [...document.querySelectorAll(`#${id} .tag.on`)].map(x=>x.textContent)}
 function saveEntry(){
-  if(severity===null){alert('Pick severity 0–10');return}
+  if(severity===null){alert('Pick severity');return}
   entries.push({id:Date.now(),date:dateEl.value,time:timeEl.value,severity,pain:selected('painTags'),symptoms:selected('symptomTags'),triggers:selected('triggerTags'),meals:document.getElementById('meals').value,hydration:document.getElementById('hydration').value,sleep:document.getElementById('sleep').value,notes:document.getElementById('notes').value});
   localStorage.setItem('headacheJournalV2',JSON.stringify(entries));
-  alert('Saved ✓');
   reset();
   render();
+  alert('Saved ✓');
 }
 function reset(){
   document.querySelectorAll('.tag.on').forEach(x=>x.classList.remove('on'));
   severity=null;
   document.querySelectorAll('.sev').forEach(x=>x.classList.remove('on'));
-  document.getElementById('sevLabel').textContent='Select 0–10';
+  document.getElementById('sevLabel').textContent='0–10';
   document.getElementById('meals').value='';
   document.getElementById('notes').value='';
-  document.getElementById('hydration').value='Not recorded';
-  document.getElementById('sleep').value='Not recorded';
+  document.getElementById('hydration').value='—';
+  document.getElementById('sleep').value='—';
   dateEl.value=`${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())}`;
   timeEl.value=`${pad(now.getHours())}:${pad(now.getMinutes())}`;
 }
@@ -154,8 +160,8 @@ function render(){
   let a=[...entries].sort((x,y)=>(y.date+y.time).localeCompare(x.date+x.time));
   let avg=entries.length?(entries.reduce((s,e)=>s+e.severity,0)/entries.length).toFixed(1):0;
   let month=new Date().toISOString().slice(0,7);
-  document.getElementById('stats').innerHTML=`<div class="stat"><span>Total</span><b>${entries.length}</b></div><div class="stat"><span>Avg</span><b>${avg}</b></div><div class="stat"><span>This month</span><b>${entries.filter(e=>e.date.startsWith(month)).length}</b></div>`;
-  document.getElementById('history').innerHTML=a.length?a.map(e=>`<div class="card entry"><div class="entry-top"><div><div class="date">${e.date} ${e.time}</div><div class="meta">${e.pain.join(', ')||'No pain type'}</div></div><span class="severity-pill ${cls(e.severity)}">${e.severity}/10</span></div>${e.symptoms.length?`<div class="chips">${e.symptoms.map(x=>`<span class="chip">${esc(x)}</span>`).join('')}</div>`:''}${e.triggers.length?`<div class="meta"><b>Triggers:</b> ${e.triggers.map(esc).join(', ')}</div>`:''}${e.meals?`<div class="meta"><b>Food:</b> ${esc(e.meals)}</div>`:''}<button class="delete" onclick="del(${e.id})">Delete</button></div>`).join(''):'<div class="empty">No entries. Log your first headache above.</div>';
+  document.getElementById('stats').innerHTML=`<div class="stat"><span>Total</span><b>${entries.length}</b></div><div class="stat"><span>Avg</span><b>${avg}</b></div><div class="stat"><span>Month</span><b>${entries.filter(e=>e.date.startsWith(month)).length}</b></div>`;
+  document.getElementById('history').innerHTML=a.length?a.map(e=>`<div class="card entry"><div class="entry-top"><div><div class="date">${e.date} ${e.time}</div><div class="meta">${e.pain.join(', ')||'—'}</div></div><span class="severity-pill ${cls(e.severity)}">${e.severity}/10</span></div>${e.symptoms.length?`<div class="chips">${e.symptoms.map(x=>`<span class="chip">${esc(x)}</span>`).join('')}</div>`:''}${e.triggers.length?`<div class="meta"><b>Triggers:</b> ${e.triggers.map(esc).join(', ')}</div>`:''}${e.meals?`<div class="meta"><b>Food:</b> ${esc(e.meals)}</div>`:''}<button class="delete" onclick="del(${e.id})">Delete</button></div>`).join(''):'<div class="empty">No entries yet. Log your first headache above.</div>';
   renderInsights();
 }
 function del(id){
@@ -167,7 +173,7 @@ function del(id){
 }
 function renderInsights(){
   if(!entries.length){
-    document.getElementById('insights').innerHTML='<div class="small">Log several entries to see patterns.</div>';
+    document.getElementById('insights').innerHTML='<div class="small">Log entries to see patterns.</div>';
     document.getElementById('distribution').innerHTML='<div class="small">No data.</div>';
     return;
   }
